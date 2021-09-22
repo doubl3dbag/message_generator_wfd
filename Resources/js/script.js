@@ -9,25 +9,25 @@ const foodEthnicities = ["Chinese", "Mexican", "American", "Italian", "Greek", "
 const mealTypes = {
     Chinese: {
         meals: {
-            Chilaquiles: {
-                Discription: "",
-                Recipie: ""
+            "Peking Duck": {
+                Discription: "The popularity of Peking Duck dates back to the Yuan Dynasty. It is one of the most common dishes in Chinese cooking and can be served in a variety of ways.",
+                Recipie: "https://www.allrecipes.com/recipe/31972/peking-duck/",
             },
-            Pozole: {
-                Discription: "",
-                Recipie: "",
+            "Biang Biang Noodles": {
+                Discription: "Biang biang noodles are thick, fat and all different shapes. They are cut straight from dough balls and carry a heavy but tasty dough flavor. ",
+                Recipie: "https://thewoksoflife.com/cumin-lamb-biang-biang-noodles/",
             },
-            Tamales: {
-                Discription: "",
-                Recipie: "",
+            "Dim Sum": {
+                Discription: "Dim sum consists of bite-size pieces, usually three to four, served in a small bamboo basket.",
+                Recipie: "https://lemontrend.com/recipes/ultimate-dim-sum-recipe-guide/",
             },
-            Chiles: {
-                Discription: "",
-                Recipie: "",
+            Xiaolongbao: {
+                Discription: "Xiaolongbao is a dumpling filled with soup and is easier to think of as soup served in a dumpling.",
+                Recipie: "https://thewoksoflife.com/steamed-shanghai-soup-dumplings-xiaolongbao/",
             },
-            Cochinita: {
-                Discription: "",
-                Recipie: "",
+            "Sichuan Hot Pot": {
+                Discription: "Sichuan hot pot is beloved for the sensation felt by the infamous Sichuan pepper. This pepper can not be sufficiently described as hot or spicy; it has a nature of its own that leaves a tingling sensation on the eaters’ tongues and lips.",
+                Recipie: "https://madewithlau.com/recipes/ultimate-guide-to-hot-pot",
             },
         },
     },
@@ -127,31 +127,31 @@ const mealTypes = {
             },
         },
     },
-    French: {
+    Thai: {
         meals: {
-            Chilaquiles: {
-                Discription: "",
-                Recipie: ""
+            "Tom Yum Goong (Spicy Shrimp Soup)": {
+                Discription: "A bold, refreshing blend of fragrant lemongrass, chili, galangal, lime leaves, shallots, lime juice and fish sauce shapes this classic soup, giving it its legendary herbal kick.",
+                Recipie: "https://www.thaitable.com/thai/recipe/tom-yum-goong"
             },
-            Pozole: {
-                Discription: "",
-                Recipie: "",
+            "Som Tum (Spicy Green Papaya Salad)": {
+                Discription: "Hailing from the Northeast state of Isaan, this outlandish dish is both great divider – some can’t get enough of its bite, some can’t handle it – and greatly distinctive.",
+                Recipie: "https://cooking.nytimes.com/recipes/1012589-green-papaya-salad",
             },
-            Tamales: {
-                Discription: "",
-                Recipie: "",
+            "Gaeng Daeng (Red Curry)": {
+                Discription: "Made with morsels of meat, red curry paste, smooth coconut milk and topped off with a sprinkling of finely sliced kaffir lime leaves, this rich, aromatic curry always gets those taste buds tingling.",
+                Recipie: "https://cookieandkate.com/thai-red-curry-recipe/",
             },
-            Chiles: {
-                Discription: "",
-                Recipie: "",
+            "Pad Thai (Thai style Fried Noodles)": {
+                Discription: "From Cape Town to Khao San Road, the default international Thai dish!",
+                Recipie: "https://tastesbetterfromscratch.com/pad-thai/",
             },
-            Cochinita: {
-                Discription: "",
-                Recipie: "",
+            "Khao Pad (Fried Rice)": {
+                Discription: "Fried rice, egg, onion, a few herbs – nothing more, nothing less.",
+                Recipie: "https://www.allrecipes.com/recipe/79543/fried-rice-restaurant-style/",
             },
         },
     },
-    Thai: {
+    French: {
         meals: {
             "Boeuf Bourguignon": {
                 Discription: "There’s nothing more comforting and luscious than Boeuf Bourguignon, a classic French beef stew made with red wine, pearl onions, mushrooms and bacon.",
