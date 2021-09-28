@@ -2,7 +2,7 @@
 
 //generate a random number
 const randomizeNum = () => {
-    Math.floor(Math.random() * 10);
+    Math.floor(Math.random() * 8);
 }
 const foodEthnicities = ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"]
 
@@ -205,9 +205,12 @@ const mealTypes = {
 
 
 //**message 1 - You had ______ for dinner yesterday? */
+//need to creat a variable to store previous meals from the week
 
 //what what ethnicity is the dinner today?
 //**message 2 - Your dinner will be ______ ethnicity. */
 
 //the name of the meal
 //**message 3 - ______ is the name of today's dinner! */
+
+console.log(mealTypes.French)
