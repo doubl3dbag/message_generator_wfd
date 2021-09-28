@@ -1,14 +1,17 @@
 //create a random meal idea to inspire the user
 
 //generate a random number
-const randomizeNum = () => {
-    Math.floor(Math.random() * 8);
+function randomizeNum (num) {
+    return Math.floor(Math.random() * num);
 }
-const foodEthnicities = ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"]
+
+const foodEthnicities = {
+    Ethnicities: ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"],
+}
 
 const mealTypes = {
     Chinese: {
-        meals: {
+        meals: [{
             "Peking Duck": {
                 Discription: "The popularity of Peking Duck dates back to the Yuan Dynasty. It is one of the most common dishes in Chinese cooking and can be served in a variety of ways.",
                 Recipie: "https://www.allrecipes.com/recipe/31972/peking-duck/",
@@ -21,7 +24,7 @@ const mealTypes = {
                 Discription: "Dim sum consists of bite-size pieces, usually three to four, served in a small bamboo basket.",
                 Recipie: "https://lemontrend.com/recipes/ultimate-dim-sum-recipe-guide/",
             },
-            Xiaolongbao: {
+            "Xiaolongbao": {
                 Discription: "Xiaolongbao is a dumpling filled with soup and is easier to think of as soup served in a dumpling.",
                 Recipie: "https://thewoksoflife.com/steamed-shanghai-soup-dumplings-xiaolongbao/",
             },
@@ -29,19 +32,19 @@ const mealTypes = {
                 Discription: "Sichuan hot pot is beloved for the sensation felt by the infamous Sichuan pepper. This pepper can not be sufficiently described as hot or spicy; it has a nature of its own that leaves a tingling sensation on the eaters’ tongues and lips.",
                 Recipie: "https://madewithlau.com/recipes/ultimate-guide-to-hot-pot",
             },
-        },
+        }],
     },
     Mexican: {
-        meals: {
-            Chilaquiles: {
+        meals: [{
+            "Chilaquiles": {
                 Discription: "Chilaquiles is a traditional breakfast dish whipped together from leftover dinner tortilla and salsa.",
                 Recipie: "https://www.thekitchn.com/chilaquiles-recipe-268271",
             },
-            Pozole: {
+            "Pozole": {
                 Discription: "Made with pork and hominy, pozole is normally eaten on special occasions, fiestas, or holidays like the Mexican Independence Day.",
                 Recipie: "https://www.simplyrecipes.com/recipes/posole_rojo/",
             },
-            Tamales: {
+            "Tamales": {
                 Discription: "Long before it was the go-to comfort food of every Mexican household, tamale fed armies of ancient Aztec warriors.",
                 Recipie: "https://tastesbetterfromscratch.com/mexican-tamales/",
             },
@@ -53,10 +56,10 @@ const mealTypes = {
                 Discription: "This slow-roasted pull pork dish from the Yucatan Peninsula is usually made from braised shoulders or loins of suckling pigs.",
                 Recipie: "https://www.simplyrecipes.com/recipes/cochinita_pibil/",
             },
-        },
+        }],
     },
     American: {
-        meals: {
+        meals: [{
             "Chicken Pot Pie": {
                 Discription: "Tell everyone you’re having pie for dinner and see how big their smiles are.",
                 Recipie: "https://www.bettycrocker.com/recipes/classic-chicken-pot-pie/60237278-5f5b-4658-a583-8d085fea6dba",
@@ -66,7 +69,7 @@ const mealTypes = {
                 Recipie: "https://www.delish.com/cooking/recipe-ideas/recipes/a52599/grilled-cheese-dogs-recipe/",
             },
             "Deep-Dish Pizza": {
-            Discription: "The dish is deep, as the name suggests, meaning the crust rises high and allows for an artery-choking volume of cheese and tomato sauce. ",
+                Discription: "The dish is deep, as the name suggests, meaning the crust rises high and allows for an artery-choking volume of cheese and tomato sauce. ",
                 Recipie: "https://sallysbakingaddiction.com/how-to-make-chicago-style-deep-dish-pizza/",
             },
             "Cheese Burgers": {
@@ -77,15 +80,15 @@ const mealTypes = {
                 Discription: "The absolute perfect chicken in my opinion.",
                 Recipie: "https://www.thecountrycook.net/the-best-southern-fried-chicken/",
             },
-        },
+        }],
     },
     Italian: {
-        meals: {
+        meals: [{
             "Pizza Napoletana": {
                 Discription: "There are so many fantastic traditional dishes in Italy, but perhaps no other sums up the very essence of Italian cooking better than Pizza Napoletana.",
                 Recipie: "https://www.acouplecooks.com/neapolitan-pizza-recipe/"
             },
-            Lasagna: {
+            "Lasagna": {
                 Discription: "One of the world’s oldest pasta recipes, lasagna (or lasagne in Italian) is a traditional Italian comfort food made by alternating layers of pasta sheets, meat, sauce, and cheese.",
                 Recipie: "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/",
             },
@@ -93,7 +96,7 @@ const mealTypes = {
                 Discription: "A hearty, flavorful Milanese specialty, ossobuco consists of veal shanks cooked slowly in white wine, meat broth, and vegetables.",
                 Recipie: "https://cooking.nytimes.com/recipes/3242-osso-buco-alla-milanese",
             },
-            Panzanella: {
+            "Panzanella": {
                 Discription: "A staple of Tuscan cuisine, or better yet, Italy’s “cucina povera”, panzanella is a healthy, delicious bread and tomato salad usually served in central Italy during the hot summer months.",
                 Recipie: "https://cooking.nytimes.com/recipes/1017518-panzanella-with-mozzarella-and-herbs",
             },
@@ -101,11 +104,11 @@ const mealTypes = {
                 Discription: "Carbonara is neither the oldest nor the most iconic (that would be cacio e pepe) pasta dish in Rome, but it’s pure magic in your mouth.",
                 Recipie: "https://cooking.nytimes.com/recipes/12965-spaghetti-carbonara",
             },
-        },
+        }],
     },
     Greek: {
-        meals: {
-            Moussaka: {
+        meals: [{
+            "Moussaka": {
                 Discription: "Moussaka is a creamy delicious dish made of spiced meat (beef or lamb) cooked in tomato sauce and then layered with fried eggplant and bechamel sauce.",
                 Recipie: "https://www.chefspencil.com/recipe/moussaka/",
             },
@@ -125,10 +128,10 @@ const mealTypes = {
                 Discription: "Soutzoukakia are sausages made from a mixture of ground pork and beef, cumin, and olive oil which are cooked in a red wine sauce.",
                 Recipie: "https://www.chefspencil.com/recipe/soutzoukakia/",
             },
-        },
+        }],
     },
     Thai: {
-        meals: {
+        meals: [{
             "Tom Yum Goong (Spicy Shrimp Soup)": {
                 Discription: "A bold, refreshing blend of fragrant lemongrass, chili, galangal, lime leaves, shallots, lime juice and fish sauce shapes this classic soup, giving it its legendary herbal kick.",
                 Recipie: "https://www.thaitable.com/thai/recipe/tom-yum-goong"
@@ -149,10 +152,10 @@ const mealTypes = {
                 Discription: "Fried rice, egg, onion, a few herbs – nothing more, nothing less.",
                 Recipie: "https://www.allrecipes.com/recipe/79543/fried-rice-restaurant-style/",
             },
-        },
+        }],
     },
     French: {
-        meals: {
+        meals: [{
             "Boeuf Bourguignon": {
                 Discription: "There’s nothing more comforting and luscious than Boeuf Bourguignon, a classic French beef stew made with red wine, pearl onions, mushrooms and bacon.",
                 Recipie: "https://www.oliviascuisine.com/boeuf-bourguignon/",
@@ -161,7 +164,7 @@ const mealTypes = {
                 Discription: "A simplified version of the classic red wine chicken stew from Burgundy.",
                 Recipie: "https://www.thekitchn.com/recipe-weeknight-coq-au-vin-recipes-from-the-kitchn-131456",
             },
-            Cassoulet: {
+            "Cassoulet": {
                 Discription: "Susan, from The View From Great Island, took Cassoulet back to its simpler roots in an easy recipe that can be made from start to finish in an hour.",
                 Recipie: "https://theviewfromgreatisland.com/easy-cassoulet/",
             },
@@ -173,15 +176,15 @@ const mealTypes = {
                 Discription: "All the flavor and sophistication from a classic Chicken Cordon Bleu in a healthier baked version.",
                 Recipie: "https://keviniscooking.com/baked-chicken-cordon-bleu-maple-dijon/",
             },
-        },
+        }],
     },
     Indian: {
-        meals: {
+        meals: [{
             "Masala dosa": {
                 Discription: "Arguably South India’s most renowned culinary export, masala dosas are famous the world over.",
                 Recipie: "https://cooking.nytimes.com/recipes/1017153-classic-masala-dosa",
             },
-            Chaat: {
+            "Chaat": {
                 Discription: "Synonymous with Delhi street food vendors, chaat is one of India’s most delicious savoury snacks.",
                 Recipie: "https://recipesaresimple.com/recipe/aloo-chana-chaat/",
             },
@@ -197,20 +200,59 @@ const mealTypes = {
                 Discription: "Punjab’s foodie heritage doesn’t stop at dal makhani. Often eaten at the start of the day, stuffed parathas are seen as the breakfast of champions in northern India.",
                 Recipie: "https://www.indianhealthyrecipes.com/aloo-paratha/",
             },
-        },
+        }],
     }
 };
 
+//store previous meals from the week
+let prevMeals = [];
+let currentMeal = [];
+//select a random ethnicity
+function randomEthnicity() {
+    let prevEthnicity = [];
+    for(let type in foodEthnicities) {
+        let typeIdx = randomizeNum(foodEthnicities[type].length)
+
+        switch(type) {
+            case 'Ethnicities':
+                prevEthnicity.push(`The ethnicity of your meal tonight will be "${foodEthnicities[type][typeIdx]}".`)
+                break
+            default:
+                prevEthnicity.push(`There is not enough info.`)
+        }
+    }
+    console.log(prevEthnicity);
+}
+
+
+
+// for(let prop in mealTypes) {
+//     let optionIdx = randomizeNum(mealTypes[prop].length);
+
+//     switch(prop) {
+//         case 'Ethnicities':
+//             currentMeal.push(`Your Chinese meal tonight will be "${foodEthnicities[prop][optionIdx]}".`)
+//             break
+//         default:
+//             currentMeal.push(`Your Chinese meal tonight will be UNKNOWN`)
+//     }
+// }
+
+
+// function formatMeal(meal) {
+//     const formatted = currentMeal;
+//     console.log(formatted);
+// }
+
+// formatMeal(currentMeal);
 //messages the program will output
 
 
 //**message 1 - You had ______ for dinner yesterday? */
-//need to creat a variable to store previous meals from the week
+
 
 //what what ethnicity is the dinner today?
-//**message 2 - Your dinner will be ______ ethnicity. */
+//**message 2 - Today your dinner will be ______ ethnicity. */
 
 //the name of the meal
 //**message 3 - ______ is the name of today's dinner! */
-
-console.log(mealTypes.French)
