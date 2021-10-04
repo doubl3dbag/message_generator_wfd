@@ -9,7 +9,7 @@ const foodEthnicities = {
     Ethnicities: ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"]
 };
 const mealTypes = {
-    Chinese: {
+    "Chinese": {
         meals: [{
             "Peking Duck": {
                 Discription: "The popularity of Peking Duck dates back to the Yuan Dynasty. It is one of the most common dishes in Chinese cooking and can be served in a variety of ways.",
@@ -33,7 +33,7 @@ const mealTypes = {
             },
         }],
     },
-    Mexican: {
+    "Mexican": {
         meals: [{
             "Chilaquiles": {
                 Discription: "Chilaquiles is a traditional breakfast dish whipped together from leftover dinner tortilla and salsa.",
@@ -57,7 +57,7 @@ const mealTypes = {
             },
         }],
     },
-    American: {
+    "American": {
         meals: [{
             "Chicken Pot Pie": {
                 Discription: "Tell everyone you’re having pie for dinner and see how big their smiles are.",
@@ -81,7 +81,7 @@ const mealTypes = {
             },
         }],
     },
-    Italian: {
+    "Italian": {
         meals: [{
             "Pizza Napoletana": {
                 Discription: "There are so many fantastic traditional dishes in Italy, but perhaps no other sums up the very essence of Italian cooking better than Pizza Napoletana.",
@@ -105,7 +105,7 @@ const mealTypes = {
             },
         }],
     },
-    Greek: {
+    "Greek": {
         meals: [{
             "Moussaka": {
                 Discription: "Moussaka is a creamy delicious dish made of spiced meat (beef or lamb) cooked in tomato sauce and then layered with fried eggplant and bechamel sauce.",
@@ -129,7 +129,7 @@ const mealTypes = {
             },
         }],
     },
-    Thai: {
+    "Thai": {
         meals: [{
             "Tom Yum Goong (Spicy Shrimp Soup)": {
                 Discription: "A bold, refreshing blend of fragrant lemongrass, chili, galangal, lime leaves, shallots, lime juice and fish sauce shapes this classic soup, giving it its legendary herbal kick.",
@@ -153,7 +153,7 @@ const mealTypes = {
             },
         }],
     },
-    French: {
+    "French": {
         meals: [{
             "Boeuf Bourguignon": {
                 Discription: "There’s nothing more comforting and luscious than Boeuf Bourguignon, a classic French beef stew made with red wine, pearl onions, mushrooms and bacon.",
@@ -204,37 +204,164 @@ const mealTypes = {
 };
 
 //store previous meals from the week
-let prevMeals = [];
-let currentMeal = [];
+let prevMeals = {
+    _monday: [],
+    _tuesday: [],
+    _wednesday: [],
+    _thursday: [],
+    _friday: [],
+    _saturday: [],
+    _sunday: []
+};
+//counter to store number === day of the week
+let counter = 0;
+
 //select a random ethnicity
 function randomEthnicity() {
     let prevEthnicity = [];
     for(let type in foodEthnicities) {
         let typeIdx = randomizeNum(foodEthnicities[type].length)
-
+        // counter = counter + 1;
+        // if (counter > 7) {
+        //     counter = 1;
+        // }
         switch(type) {
             case 'Ethnicities':
-                prevEthnicity.push(`The ethnicity of your meal tonight will be "${foodEthnicities[type][typeIdx]}".`)
+                prevEthnicity.push(`${foodEthnicities[type][typeIdx]}`)
                 break
             default:
                 prevEthnicity.push(`There is not enough info.`)
         }
     }
-    console.log(prevEthnicity);
+    return prevEthnicity;
+}
+//callback function for randomEhnicity
+const currentMeal = () => {
+    return randomEthnicity();
+};
+//place the returned value of 
+//randomEthnicity into 
+function placeMeal() {
+    let mealHolder = currentMeal();
+    counter = counter + 1;
+    if (counter > 7) {
+        counter = 1;
+    }
+    if(counter === 1) {
+        prevMeals._monday.pop();
+        prevMeals._monday.push(mealHolder);
+    }
+    else if(counter === 2) {
+        prevMeals._tuesday.pop();
+        prevMeals._tuesday.push(mealHolder);
+    }
+    else if(counter ===3) {
+        prevMeals._wednesday.pop();
+        prevMeals._wednesday.push(mealHolder);
+    }
+    else if(counter === 4) {
+        prevMeals._thursday.pop();
+        prevMeals._thursday.push(mealHolder);
+    }
+    else if(counter === 5) {
+        prevMeals._friday.pop();
+        prevMeals._friday.push(mealHolder);
+    }
+    else if(counter === 6) {
+        prevMeals._saturday.pop();
+        prevMeals._saturday.push(mealHolder);
+    }
+    else {
+        prevMeals._sunday.pop();
+        prevMeals._sunday.push(mealHolder);
+    }
+    return mealHolder;
 }
 
-// for(let prop in mealTypes) {
-//     let optionIdx = randomizeNum(mealTypes[prop].length);
-
-//     switch(prop) {
-//         case 'Ethnicities':
-//             currentMeal.push(`Your Chinese meal tonight will be "${foodEthnicities[prop][optionIdx]}".`)
-//             break
-//         default:
-//             currentMeal.push(`Your Chinese meal tonight will be UNKNOWN`)
+// function placeMeal() {
+//     let mealHolder = currentMeal();
+//     counter = counter + 1;
+//     if (counter > 7) {
+//         counter = 1;
 //     }
+//     if (counter === 1) {
+//         do {
+//             mealHolder = randomEthnicity();
+//         }
+//         while (mealHolder === prevMeals._sunday);
+//         prevMeals._monday.pop();
+//         prevMeals._monday.push(mealHolder);
+//     }
+//     else if (counter === 2) {
+//         prevMeals._tuesday.pop();
+//         prevMeals._tuesday.push(mealHolder);
+//         while (prevMeals._monday === prevMeals._tuesday) {
+//             return mealHolder;
+//         }
+//     }
+//     else if (counter === 3) {
+//         prevMeals._wednesday.pop();
+//         prevMeals._wednesday.push(mealHolder);
+//         while (prevMeals._tuesday === prevMeals._wednesday) {
+//             return mealHolder;
+//         }
+//     }
+//     else if (counter === 4) {
+//         prevMeals._thursday.pop();
+//         prevMeals._thursday.push(mealHolder);
+//         while (prevMeals._wednesday === prevMeals._thursday) {
+//             return mealHolder;
+//         }
+//     }
+//     else if (counter === 5) {
+//         prevMeals._friday.pop();
+//         prevMeals._friday.push(mealHolder);
+//         while (prevMeals._thursday === prevMeals._friday) {
+//             return mealHolder;
+//         }
+//     }
+//     else if (counter === 6) {
+//         prevMeals._saturday.pop();
+//         prevMeals._saturday.push(mealHolder);
+//         while (prevMeals._friday === prevMeals._saturday) {
+//             return mealHolder;
+//         }
+//     }
+//     else {
+//         prevMeals._sunday.pop();
+//         prevMeals._sunday.push(mealHolder);
+//         while (prevMeals._saturday === prevMeals._sunday) {
+//             return mealHolder;
+//         }
+//     }
+//     return mealHolder;
 // }
 
+function getRecipie() {
+    let recipeHolder = [];
+        if(counter === 1) {
+            recipeHolder.push(prevMeals._monday)
+        }
+        if (counter === 2) {
+            recipeHolder.push(prevMeals._tuesday)
+        }
+        if (counter === 3) {
+            recipeHolder.push(prevMeals._wednesday)
+        }
+        if (counter === 4) {
+            recipeHolder.push(prevMeals._thursday)
+        }
+        if (counter === 5) {
+            recipeHolder.push(prevMeals._friday)
+        }
+        if (counter === 6) {
+            recipeHolder.push(prevMeals._saturday)
+        }
+        if (counter === 7) {
+            recipeHolder.push(prevMeals._sunday)
+        }
+    return recipeHolder;
+}
 
 // function formatMeal(meal) {
 //     const formatted = currentMeal;
