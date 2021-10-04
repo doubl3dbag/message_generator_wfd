@@ -6,9 +6,8 @@ function randomizeNum (num) {
 }
 
 const foodEthnicities = {
-    Ethnicities: ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"],
-}
-
+    Ethnicities: ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"]
+};
 const mealTypes = {
     Chinese: {
         meals: [{
@@ -224,8 +223,6 @@ function randomEthnicity() {
     console.log(prevEthnicity);
 }
 
-
-
 // for(let prop in mealTypes) {
 //     let optionIdx = randomizeNum(mealTypes[prop].length);
 
@@ -256,3 +253,4 @@ function randomEthnicity() {
 
 //the name of the meal
 //**message 3 - ______ is the name of today's dinner! */
+
