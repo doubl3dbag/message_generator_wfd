@@ -9,7 +9,7 @@ const foodEthnicities = {
     Ethnicities: ["Chinese", "Mexican", "American", "Italian", "Greek", "French", "Thai", "Indian"]
 };
 const mealTypes = {
-    "Chinese": {
+    Chinese: {
         meals: [{
             "Peking Duck": {
                 Discription: "The popularity of Peking Duck dates back to the Yuan Dynasty. It is one of the most common dishes in Chinese cooking and can be served in a variety of ways.",
@@ -33,7 +33,7 @@ const mealTypes = {
             },
         }],
     },
-    "Mexican": {
+    Mexican: {
         meals: [{
             "Chilaquiles": {
                 Discription: "Chilaquiles is a traditional breakfast dish whipped together from leftover dinner tortilla and salsa.",
@@ -57,7 +57,7 @@ const mealTypes = {
             },
         }],
     },
-    "American": {
+    American: {
         meals: [{
             "Chicken Pot Pie": {
                 Discription: "Tell everyone you’re having pie for dinner and see how big their smiles are.",
@@ -81,7 +81,7 @@ const mealTypes = {
             },
         }],
     },
-    "Italian": {
+    Italian: {
         meals: [{
             "Pizza Napoletana": {
                 Discription: "There are so many fantastic traditional dishes in Italy, but perhaps no other sums up the very essence of Italian cooking better than Pizza Napoletana.",
@@ -105,7 +105,7 @@ const mealTypes = {
             },
         }],
     },
-    "Greek": {
+    Greek: {
         meals: [{
             "Moussaka": {
                 Discription: "Moussaka is a creamy delicious dish made of spiced meat (beef or lamb) cooked in tomato sauce and then layered with fried eggplant and bechamel sauce.",
@@ -129,7 +129,7 @@ const mealTypes = {
             },
         }],
     },
-    "Thai": {
+    Thai: {
         meals: [{
             "Tom Yum Goong (Spicy Shrimp Soup)": {
                 Discription: "A bold, refreshing blend of fragrant lemongrass, chili, galangal, lime leaves, shallots, lime juice and fish sauce shapes this classic soup, giving it its legendary herbal kick.",
@@ -153,7 +153,7 @@ const mealTypes = {
             },
         }],
     },
-    "French": {
+    French: {
         meals: [{
             "Boeuf Bourguignon": {
                 Discription: "There’s nothing more comforting and luscious than Boeuf Bourguignon, a classic French beef stew made with red wine, pearl onions, mushrooms and bacon.",
@@ -240,9 +240,10 @@ const currentMeal = () => {
     return randomEthnicity();
 };
 //place the returned value of 
-//randomEthnicity into 
+//randomEthnicity into corresponding day
 function placeMeal() {
     let mealHolder = currentMeal();
+
     counter = counter + 1;
     if (counter > 7) {
         counter = 1;
@@ -278,87 +279,43 @@ function placeMeal() {
     return mealHolder;
 }
 
-// function placeMeal() {
-//     let mealHolder = currentMeal();
-//     counter = counter + 1;
-//     if (counter > 7) {
-//         counter = 1;
-//     }
-//     if (counter === 1) {
-//         do {
-//             mealHolder = randomEthnicity();
-//         }
-//         while (mealHolder === prevMeals._sunday);
-//         prevMeals._monday.pop();
-//         prevMeals._monday.push(mealHolder);
-//     }
-//     else if (counter === 2) {
-//         prevMeals._tuesday.pop();
-//         prevMeals._tuesday.push(mealHolder);
-//         while (prevMeals._monday === prevMeals._tuesday) {
-//             return mealHolder;
-//         }
-//     }
-//     else if (counter === 3) {
-//         prevMeals._wednesday.pop();
-//         prevMeals._wednesday.push(mealHolder);
-//         while (prevMeals._tuesday === prevMeals._wednesday) {
-//             return mealHolder;
-//         }
-//     }
-//     else if (counter === 4) {
-//         prevMeals._thursday.pop();
-//         prevMeals._thursday.push(mealHolder);
-//         while (prevMeals._wednesday === prevMeals._thursday) {
-//             return mealHolder;
-//         }
-//     }
-//     else if (counter === 5) {
-//         prevMeals._friday.pop();
-//         prevMeals._friday.push(mealHolder);
-//         while (prevMeals._thursday === prevMeals._friday) {
-//             return mealHolder;
-//         }
-//     }
-//     else if (counter === 6) {
-//         prevMeals._saturday.pop();
-//         prevMeals._saturday.push(mealHolder);
-//         while (prevMeals._friday === prevMeals._saturday) {
-//             return mealHolder;
-//         }
-//     }
-//     else {
-//         prevMeals._sunday.pop();
-//         prevMeals._sunday.push(mealHolder);
-//         while (prevMeals._saturday === prevMeals._sunday) {
-//             return mealHolder;
-//         }
-//     }
-//     return mealHolder;
-// }
-
 function getRecipie() {
     let recipeHolder = [];
-        if(counter === 1) {
-            recipeHolder.push(prevMeals._monday)
+    if(counter === 1) {
+        for(let i = 0; i < foodEthnicities.Ethnicities.length; i++) {
+            if(prevMeals._monday === !'Chinese') {
+                i++;
+            }
+            else {
+                console.log("Chinese was correct!")
+            }
         }
-        if (counter === 2) {
-            recipeHolder.push(prevMeals._tuesday)
-        }
-        if (counter === 3) {
-            recipeHolder.push(prevMeals._wednesday)
-        }
-        if (counter === 4) {
-            recipeHolder.push(prevMeals._thursday)
-        }
-        if (counter === 5) {
-            recipeHolder.push(prevMeals._friday)
-        }
-        if (counter === 6) {
-            recipeHolder.push(prevMeals._saturday)
-        }
-        if (counter === 7) {
-            recipeHolder.push(prevMeals._sunday)
+    }
+        switch(meals) {
+            case 'Chinese':
+                recipeHolder.push(mealTypes.Chinese[meals][mealIdx])
+                break
+            case 'Mexican':
+                recipeHolder.push(mealTypes.Mexican[meals][mealIdx])
+                break
+            case 'American':
+                recipeHolder.push(mealTypes.American[meals][mealIdx])
+                break
+            case 'Italian':
+                recipeHolder.push(mealTypes.Italian[meals][mealIdx])
+                break
+            case 'Greek':
+                recipeHolder.push(mealTypes.Greek[meals][mealIdx])
+                break
+            case 'French':
+                recipeHolder.push(mealTypes.French[meals][mealIdx])
+                break
+            case 'Thai':
+                recipeHolder.push(mealTypes.Thai[meals][mealIdx])
+                break
+            case 'Indian':
+                recipeHolder.push(mealTypes.Indian[meals][mealIdx])
+                break
         }
     return recipeHolder;
 }
