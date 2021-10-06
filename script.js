@@ -5,9 +5,6 @@ function randomizeNum(num) {
     return Math.floor(Math.random() * num);
 }
 
-//counter to track day
-// let counter = 0;
-
 //crate meal object to hold meal categories
 const meals = {
 
@@ -56,14 +53,8 @@ const meals = {
         },
     },
 
-    //store previous/current meals
+    //store meal
     _day: {
-        _yesterday: {
-            _ethnicity: [],
-            _meal: [],
-            _discription: [],
-            _recipe: [],
-        },
         _today: {
             _ethnicity: [],
             _meal: [],
@@ -71,7 +62,9 @@ const meals = {
             _recipe: [],
         }
     },
+    //create method to generate a random meal
     getRandomMeal() {
+        //create meal message structure
         const ethnicities = this._ethnicities;
         const todayEthnicity = this._day._today._ethnicity;
         const todayMeal = this._day._today._meal;
@@ -80,13 +73,18 @@ const meals = {
         let mealsMeals = this._meals.Chinese.meals;
         let mealsDiscription = this._meals.Chinese.discriptions;
         let mealsRecipe = this._meals.Chinese.recipes;
+        //create variable to hold randomly selected ethnicity and meal type
         const randomEhnicity = randomizeNum(ethnicities.length);
         const randomMealsMeals = randomizeNum(mealsMeals.length);
+        //ensure the variable holding message structure are clear before adding data
         todayEthnicity.pop();
         todayMeal.pop();
         todayDiscription.pop();
         todayRecipe.pop();
+        //select ethnicity of the meal and store it
         todayEthnicity.push(`The ethnicity of your meal today is: "${ethnicities[randomEhnicity]}".`);
+        //once ethnicity is stored begin process of selecting remaining 
+        //data that corresponds to the stored ethnicity
         if (randomEhnicity === 0) {
             todayMeal.push(`Your random meal for today will be: "${mealsMeals[randomMealsMeals]}".`);
             todayDiscription.push(`A little discription of your meal today: "${mealsDiscription[randomMealsMeals]}".`);
@@ -148,15 +146,16 @@ const meals = {
             todayDiscription.push(`A little discription of your meal today: "${mealsDiscription[randomMealsMeals]}".`);
             todayRecipe.push(`The recipe for your meal is located here: "${mealsRecipe[randomMealsMeals]}".`);
         }
+        //log each of the 4 values to ouput message into the terminal
         console.log(meals._day._today._ethnicity[0]);
         console.log(meals._day._today._meal[0]);
         console.log(meals._day._today._discription[0]);
         console.log(meals._day._today._recipe[0]);
     },
 };
-
+//add function to auto run application 
 function appRun() {
     return meals.getRandomMeal();
 }
-
+//run the application
 appRun();
